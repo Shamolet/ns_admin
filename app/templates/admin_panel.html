@@ -1,0 +1,20 @@
+
+
+
+{% block body %}
+
+ <ol>
+    {% for user in all_users %}
+    <li>{{ user.username }} {{ user.username }}
+        {% for tag in user.tags %}
+            {{ tag.name }}
+        {% endfor %}</li>
+    {% endfor %}
+</ol>
+
+
+
+
+
+
+{% endblock body %}
