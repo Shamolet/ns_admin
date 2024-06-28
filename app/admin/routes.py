@@ -3,7 +3,7 @@ from flask_admin import expose
 from flask_login import current_user, logout_user, login_user
 from werkzeug.urls import url_parse
 from app.admin import admin_bp
-from app.forms.auth_forms import AdminLoginForm
+from app.forms.auth_forms import LoginForm # change AdminLoginForm
 from app.models.models import User
 
 
@@ -18,7 +18,7 @@ def index(self):
 def admin_login():
     if current_user.is_authenticated:
         return redirect(url_for('admin_bp.index'))
-    form = AdminLoginForm()
+    form = LoginForm() # change AdminLoginForm
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
